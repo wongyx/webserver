@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
     // "<p>OS Name: " + result.os.name + "</p>" +
     // "<p>OS Version: " + result.os.version + "</p>" +
     // "<p>IP: " + req.headers['x-forwarded-for'] || req.connection.remoteAddress + "</p>";
-    const browser_info = 'UA: ' + browser_info + "\nIP: " + req.headers['x-forwarded-for'] + '\n';
+    const browser_info = 'UA: ' + result + "\nIP: " + req.headers['x-forwarded-for'] + '\n';
 
     console.log(`Logged access for rid: ${browser_info}`);
     });

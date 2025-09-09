@@ -11,12 +11,11 @@ app.get("/", (req, res) => {
     parser.setUA(userAgent)
     const result = parser.getResult();
 
-    // const browser_info = "<p>Browser Name: " + result.browser.name + "</p>" +
-    // "<p>Browser Version: " + result.browser.version + "</p>" +
-    // "<p>OS Name: " + result.os.name + "</p>" +
-    // "<p>OS Version: " + result.os.version + "</p>" +
-    // "<p>IP: " + req.headers['x-forwarded-for'] || req.connection.remoteAddress + "</p>";
-    const browser_info = 'UA: ' + result + "\nIP: " + req.headers['x-forwarded-for'] + '\n';
+    const browser_info = "Browser Name: " + result.browser.name +
+    "Browser Version: " + result.browser.version +
+    "OS Name: " + result.os.name +
+    "OS Version: " + result.os.version +
+    "<p>IP: " + req.headers['x-forwarded-for'] || req.connection.remoteAddress + "</p>";
 
     console.log(`Logged access for rid: ${browser_info}`);
     });

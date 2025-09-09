@@ -5,15 +5,15 @@ const PORT = 3000;
 
 app.get("/", (req, res) => {
     res.json({ msg: "Test server" });
+    const userAgent = req.headers['user-agent'];
+    const useragent = require('ua-parser-js');
+    const parser = new useragent(userAgent);
+    const result = parser.getResult();
 
-    let browser_info = "<p>Browser CodeName: " + navigator.appCodeName + "</p>" +
-    "<p>Browser Name: " + navigator.appName + "</p>" +
-    "<p>Browser Version: " + navigator.appVersion + "</p>" +
-    "<p>Cookies Enabled: " + navigator.cookieEnabled + "</p>" +
-    "<p>Browser Language: " + navigator.language + "</p>" +
-    "<p>Browser Online: " + navigator.onLine + "</p>" +
-    "<p>Platform: " + navigator.platform + "</p>" +
-    "<p>User-agent header: " + navigator.userAgent + "</p>" +
+    const browser_info = "<p>Browser Name: " + result.browser.name + "</p>" +
+    "<p>Browser Version: " + result.browser.version + "</p>" +
+    "<p>OS Name: " + result.os.name + "</p>" +
+    "<p>OS Version: " + result.os.version + "</p>" +
     "<p>IP: " + req.headers['x-forwarded-for'] || req.connection.remoteAddress + "</p>";
 
     console.log(`Logged access for rid: ${browser_info}`);

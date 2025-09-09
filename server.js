@@ -1,4 +1,5 @@
 import express from "express";
+import {UAParser} from "ua-parser-js"
 
 const app = express();
 const PORT = 3000;
@@ -6,8 +7,8 @@ const PORT = 3000;
 app.get("/", (req, res) => {
     res.json({ msg: "Test server" });
     const userAgent = req.headers['user-agent'];
-    const useragent = require('ua-parser-js');
-    const parser = new useragent(userAgent);
+    const parser = new UAParser();
+    parser.setUA(userAgent)
     const result = parser.getResult();
 
     const browser_info = "<p>Browser Name: " + result.browser.name + "</p>" +
